@@ -1,0 +1,23 @@
+.ticket-status[b-uyme21jrho] {
+    display: flex;
+    flex-direction: column;
+    width: 312px;
+}
+
+.ticket-status ul[b-uyme21jrho] {
+    flex: 1;
+}
+
+.dropzone[b-uyme21jrho] {
+    padding: 30px;
+    border: 1px solid #75868a;
+    list-style: none;
+}
+
+.no-drop[b-uyme21jrho] {
+    border: 2px solid red;
+}
+
+.can-drop[b-uyme21jrho] {
+    border: 2px solid green;
+}

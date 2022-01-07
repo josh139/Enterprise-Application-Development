@@ -1,0 +1,209 @@
+/* /Shared/MainLayout.razor.rz.scp.css */
+.page[b-52qe9wbjg4] {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.main[b-52qe9wbjg4] {
+    flex: 1;
+}
+
+.sidebar[b-52qe9wbjg4] {
+    background: #212529;
+}
+
+.top-row[b-52qe9wbjg4] {
+    background-color: #f7f7f7;
+    border-bottom: 1px solid #d6d5d5;
+    justify-content: flex-end;
+    height: 3.5rem;
+    display: flex;
+    align-items: center;
+}
+
+    .top-row[b-52qe9wbjg4]  a, .top-row .btn-link[b-52qe9wbjg4] {
+        white-space: nowrap;
+        margin-left: 1.5rem;
+    }
+
+    .top-row a:first-child[b-52qe9wbjg4] {
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+@media (max-width: 640.98px) {
+    .top-row:not(.auth)[b-52qe9wbjg4] {
+        display: none;
+    }
+
+    .top-row.auth[b-52qe9wbjg4] {
+        justify-content: space-between;
+    }
+
+    .top-row a[b-52qe9wbjg4], .top-row .btn-link[b-52qe9wbjg4] {
+        margin-left: 0;
+    }
+}
+
+@media (min-width: 641px) {
+    .page[b-52qe9wbjg4] {
+        flex-direction: row;
+    }
+
+    .sidebar[b-52qe9wbjg4] {
+        width: 250px;
+        height: 100vh;
+        position: sticky;
+        top: 0;
+    }
+
+    .top-row[b-52qe9wbjg4] {
+        position: sticky;
+        top: 0;
+        z-index: 1;
+    }
+
+    .main > div[b-52qe9wbjg4] {
+        padding-left: 2rem !important;
+        padding-right: 1.5rem !important;
+    }
+}
+/* /Shared/NavMenu.razor.rz.scp.css */
+.navbar-toggler[b-a4aaanlni7] {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.top-row[b-a4aaanlni7] {
+    height: 3.5rem;
+    background-color: rgba(0,0,0,0.4);
+}
+
+.navbar-brand[b-a4aaanlni7] {
+    font-size: 1.1rem;
+}
+
+.oi[b-a4aaanlni7] {
+    width: 2rem;
+    font-size: 1.1rem;
+    vertical-align: text-top;
+    top: -2px;
+}
+
+.nav-item[b-a4aaanlni7] {
+    font-size: 0.9rem;
+    padding-bottom: 0.5rem;
+}
+
+    .nav-item:first-of-type[b-a4aaanlni7] {
+        padding-top: 1rem;
+    }
+
+    .nav-item:last-of-type[b-a4aaanlni7] {
+        padding-bottom: 1rem;
+    }
+
+    .nav-item[b-a4aaanlni7]  a {
+        color: #d7d7d7;
+        border-radius: 4px;
+        height: 3rem;
+        display: flex;
+        align-items: center;
+        line-height: 3rem;
+    }
+
+.nav-item[b-a4aaanlni7]  a.active {
+    background-color: rgba(255,255,255,0.25);
+    color: white;
+}
+
+.nav-item[b-a4aaanlni7]  a:hover {
+    background-color: rgba(255,255,255,0.1);
+    color: white;
+}
+
+@media (min-width: 641px) {
+    .navbar-toggler[b-a4aaanlni7] {
+        display: none;
+    }
+
+    .collapse[b-a4aaanlni7] {
+        /* Never collapse the sidebar for wide screens */
+        display: block;
+    }
+}
+/* /Shared/TicketCard.razor.rz.scp.css */
+.draggable[b-qlhocnhn2h] {
+    margin-bottom: 10px;
+    padding: 10px 25px;
+    border: 1px solid #424d5c;
+    cursor: grab;
+    background: rgb(247, 247, 247);
+    font-size: 18px;
+    width: 250px;
+}
+
+.background-crucial[b-qlhocnhn2h] {
+    background: #ff0000;
+}
+
+.background-high[b-qlhocnhn2h] {
+    background: #ff6a00;
+}
+
+.background-medium[b-qlhocnhn2h] {
+    background: #ffd800;
+}
+
+.background-low[b-qlhocnhn2h] {
+    background: #4cff00;
+}
+
+    .draggable:active[b-qlhocnhn2h] {
+        cursor: grabbing;
+    }
+
+.description[b-qlhocnhn2h] {
+    font-size: 18px;
+}
+
+.last-updated[b-qlhocnhn2h] {
+    margin-bottom: 0;
+    font-size: 11px;
+    color: #e1e5ea;
+    font-weight: bold;
+}
+    .last-updated small[b-qlhocnhn2h] {
+        text-transform: uppercase;
+        color: #c4cbd4;
+        font-size: 11px;
+    }
+/* /Shared/TicketList.razor.rz.scp.css */
+.ticket-status[b-uyme21jrho] {
+    display: flex;
+    flex-direction: column;
+    width: 312px;
+}
+
+.ticket-status ul[b-uyme21jrho] {
+    flex: 1;
+}
+
+.dropzone[b-uyme21jrho] {
+    padding: 30px;
+    border: 1px solid #75868a;
+    list-style: none;
+}
+
+.no-drop[b-uyme21jrho] {
+    border: 2px solid red;
+}
+
+.can-drop[b-uyme21jrho] {
+    border: 2px solid green;
+}
+/* /Shared/TicketsContainer.razor.rz.scp.css */
+.tickets-container[b-y22x09stru] {
+    display: flex;
+    justify-content: space-around;
+}

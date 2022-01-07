@@ -1,0 +1,41 @@
+﻿<li class="draggable" draggable="true" title="@Ticket.Description" @ondragstart="@(() => HandleDragStart(Ticket))">
+    <p class="@backgroundClass" style="text-align:center;">@Ticket.Name</p>
+    <hr/>
+    <p class="description" style="text-align:center;">@Ticket.Description</p>
+    <p class="last-updated" style="text-align:center;"><small>Last Updated</small> @Ticket.LastUpdated.ToString("HH:mm:ss")</p>
+</li>
+
+@code {
+    [CascadingParameter] TicketsContainer Container { get; set; }
+    [Parameter] public Ticket Ticket { get; set; }
+    string backgroundClass = "";
+
+    protected override void OnParametersSet()
+    {
+        if (Ticket.Priority == TicketPriority.Crucial)
+        {
+            backgroundClass = "background-crucial";
+        }
+
+        else if (Ticket.Priority == TicketPriority.High)
+        {
+            backgroundClass = "background-high";
+        }
+
+        else if (Ticket.Priority == TicketPriority.Medium)
+        {
+            backgroundClass = "background-medium";
+        }
+
+        else
+        {
+            backgroundClass = "background-low";
+        }
+
+    }
+
+    private void HandleDragStart(Ticket selectedTicket)
+    {
+        Container.Ticket = selectedTicket;
+    }
+}

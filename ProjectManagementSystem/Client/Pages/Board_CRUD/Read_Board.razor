@@ -1,0 +1,93 @@
+﻿@page "/read_board/{Id:guid}"
+
+@inject HttpClient Http
+@inject NavigationManager Navigation
+
+<div>
+    <button class="btn btn-outline-secondary oi oi-arrow-left" @onclick="GoToHome"></button>
+    <h3 class="text-center display-3">@Board.Name</h3>
+    <a class="btn btn-outline-secondary oi oi-plus" style="text-align:left" href="/create_ticket/@Board.Id"></a>
+</div>
+
+<hr />
+
+<TicketsContainer Tickets="BoardsTickets" OnStatusUpdated="HandleStatusUpdated">
+    <TicketList ListStatus="TicketStatus.Todo" AllowedStatuses="@(new TicketStatus[] { TicketStatus.Started})" />
+    <TicketList ListStatus="TicketStatus.Started" AllowedStatuses="@(new TicketStatus[] { TicketStatus.Todo})" />
+    <TicketList ListStatus="TicketStatus.Completed" AllowedStatuses="@(new TicketStatus[] { TicketStatus.Started })" />
+</TicketsContainer>
+
+<hr />
+
+<div class="table-responsive">
+    <table class="table table-bordered">
+        <thead class="thead-dark">
+            <tr>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Status</th>
+                <th>Priority</th>
+                <th style="text-align:center">Delete?</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var ticket in BoardsTickets)
+            {
+                <tr>
+                    <td>
+                        @ticket.Name
+                    </td>
+                    <td>
+                        @ticket.Description
+                    </td>
+                    <td>
+                        @ticket.Status
+                    </td>
+                    <td>
+                        @ticket.Priority
+                    </td>
+                    <td align="center">
+                        <a class="btn btn-outline-secondary oi oi-minus" href="/delete_ticket/@ticket.Id"></a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+
+
+
+@code {
+    [Parameter] public Guid Id { get; set; }
+    private Board Board { get; set; } = new Board();
+    private List<Ticket> Tickets = new List<Ticket>();
+    private List<Board> Boards = new List<Board>();
+    private List<Ticket> BoardsTickets = new List<Ticket>();
+
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            Board = await Http.GetFromJsonAsync<Board>($"api/Boards/{Id}");
+            Tickets = await Http.GetFromJsonAsync<List<Ticket>>("/api/Tickets");
+            Boards = await Http.GetFromJsonAsync<List<Board>>("api/Boards");
+            BoardsTickets = Tickets.Where(t => t.BoardId == Board.Id).ToList();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.Message);
+        }
+    }
+
+    private void GoToHome()
+    {
+        Navigation.NavigateTo("/");
+    }
+
+    async void HandleStatusUpdated(Ticket updatedTicket)
+    {
+        var response = await Http.PutAsJsonAsync($"api/Tickets/{updatedTicket.Id}", updatedTicket);
+        response.EnsureSuccessStatusCode();
+    }
+}

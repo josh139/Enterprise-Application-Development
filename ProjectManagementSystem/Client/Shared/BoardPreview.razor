@@ -1,0 +1,14 @@
+﻿<div class="card border-secondary">
+    <div class="card-header text-center">@CardTitle</div>
+    <div class="card-body">
+        <p class="card-text text-center">@CardDesc</p>
+    </div>
+</div>
+
+@code {
+    [Parameter]
+    public RenderFragment CardTitle { get; set; }
+
+    [Parameter]
+    public RenderFragment CardDesc { get; set; }
+}

@@ -1,0 +1,12 @@
+C:\Users\jbors\source\repos\ProjectManagementSystem\Shared\bin\Debug\net5.0\ProjectManagementSystem.Shared.deps.json
+C:\Users\jbors\source\repos\ProjectManagementSystem\Shared\bin\Debug\net5.0\ProjectManagementSystem.Shared.dll
+C:\Users\jbors\source\repos\ProjectManagementSystem\Shared\bin\Debug\net5.0\ref\ProjectManagementSystem.Shared.dll
+C:\Users\jbors\source\repos\ProjectManagementSystem\Shared\bin\Debug\net5.0\ProjectManagementSystem.Shared.pdb
+C:\Users\jbors\source\repos\ProjectManagementSystem\Shared\obj\Debug\net5.0\ProjectManagementSystem.Shared.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\jbors\source\repos\ProjectManagementSystem\Shared\obj\Debug\net5.0\ProjectManagementSystem.Shared.AssemblyInfoInputs.cache
+C:\Users\jbors\source\repos\ProjectManagementSystem\Shared\obj\Debug\net5.0\ProjectManagementSystem.Shared.AssemblyInfo.cs
+C:\Users\jbors\source\repos\ProjectManagementSystem\Shared\obj\Debug\net5.0\ProjectManagementSystem.Shared.csproj.CoreCompileInputs.cache
+C:\Users\jbors\source\repos\ProjectManagementSystem\Shared\obj\Debug\net5.0\ProjectManagementSystem.Shared.dll
+C:\Users\jbors\source\repos\ProjectManagementSystem\Shared\obj\Debug\net5.0\ref\ProjectManagementSystem.Shared.dll
+C:\Users\jbors\source\repos\ProjectManagementSystem\Shared\obj\Debug\net5.0\ProjectManagementSystem.Shared.pdb
+C:\Users\jbors\source\repos\ProjectManagementSystem\Shared\obj\Debug\net5.0\ProjectManagementSystem.Shared.csproj.AssemblyReference.cache

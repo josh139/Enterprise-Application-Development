@@ -1,0 +1,49 @@
+﻿@page "/delete_company/{Id:guid}"
+
+@inject HttpClient Http
+@inject NavigationManager Navigation
+
+<div>
+    <button class="btn btn-outline-secondary oi oi-arrow-left" @onclick="GoToReadCompany"></button>
+    <h3 style="padding-left:25%;">Are you sure you want to @Company.Name?</h3>
+</div>
+
+<div class="row justify-content-md-center">
+    <button class="btn btn-primary" @onclick="DeleteCompany">Delete</button>
+</div>
+
+@code {
+    [Parameter] public Guid Id { get; set; }
+    private Company Company { get; set; } = new Company();
+
+    private void GoToReadCompany()
+    {
+        Navigation.NavigateTo("/read_companies");
+    }
+
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            Company = await Http.GetFromJsonAsync<Company>($"api/Companies/{Id}");
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.Message);
+        }
+    }
+
+    protected async Task DeleteCompany()
+    {
+        try
+        {
+            await Http.DeleteAsync($"api/Companies/{Id}");
+            Navigation.NavigateTo("/read_companies");
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.Message);
+        }
+    }
+
+}

@@ -1,0 +1,8 @@
+{
+  "runtimeOptions": {
+    "additionalProbingPaths": [
+      "C:\\Users\\jbors\\.dotnet\\store\\|arch|\\|tfm|",
+      "C:\\Users\\jbors\\.nuget\\packages"
+    ]
+  }
+}

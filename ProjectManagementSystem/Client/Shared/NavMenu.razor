@@ -1,0 +1,41 @@
+﻿<div class="@NavMenuCssClass" @onclick="ToggleNavMenu">
+    <ul class="nav flex-column">
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" @onclick="()=>expandSubMenuCompany= !expandSubMenuCompany" Match="NavLinkMatch.All">
+                <span class="oi oi-shield" aria-hidden="true"></span> Company
+            </NavLink>
+            @if (expandSubMenuCompany)
+            {
+                <ul class="nav flex-column">
+                    <li class="nav-item px-3">
+                        <NavLink class="nav-link" href="create_company" Match="NavLinkMatch.All">
+                            <span class="oi oi-pencil" aria-hidden="true"></span> Add a Company
+                        </NavLink>
+                    </li>
+                    <li class="nav-item px-3">
+                        <NavLink class="nav-link" href="read_companies" Match="NavLinkMatch.All">
+                            <span class="oi oi-book" aria-hidden="true"></span> View Companies
+                        </NavLink>
+                    </li>
+                </ul>
+            }
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="" Match="NavLinkMatch.All">
+                <span class="oi oi-home" aria-hidden="true"></span> Home
+            </NavLink>
+        </li>
+    </ul>
+</div>
+
+@code {
+    private bool collapseNavMenu = true;
+    private bool expandSubMenuCompany;
+
+    private string NavMenuCssClass => collapseNavMenu ? "collapse" : null;
+
+    private void ToggleNavMenu()
+    {
+        collapseNavMenu = !collapseNavMenu;
+    }
+}

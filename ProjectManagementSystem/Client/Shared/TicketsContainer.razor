@@ -1,0 +1,25 @@
+﻿<div class="tickets-container">
+    <CascadingValue Value="this">
+        @ChildContent
+    </CascadingValue>
+</div>
+
+@code {
+    [Parameter] public List<Ticket> Tickets { get; set; }
+    [Parameter] public RenderFragment ChildContent { get; set; }
+    [Parameter] public EventCallback<Ticket> OnStatusUpdated { get; set; }
+
+    public Ticket Ticket { get; set; }
+
+    public async Task UpdateTicketAsync(TicketStatus newStatus)
+    {
+        var ticket = Tickets.SingleOrDefault(t => t.Id == Ticket.Id);
+
+        if (ticket != null)
+        {
+            ticket.Status = newStatus;
+            ticket.LastUpdated = DateTime.Now;
+            await OnStatusUpdated.InvokeAsync(Ticket);
+        }
+    }
+}

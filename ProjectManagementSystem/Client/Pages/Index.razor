@@ -1,0 +1,59 @@
+﻿@page "/"
+
+@inject NavigationManager Navigation
+@inject HttpClient Http
+
+<h1 class="text-center display-3">Here are your Boards</h1>
+
+<hr />
+
+<div class="text-center shadow p-3 bg-white rounded">Welcome to my Project Management System Application! *Please Register/Login to get started*</div>
+
+<hr />
+
+@foreach (var company in Companies)
+{
+    <div class="row"> <h3>@company.Name</h3> </div>
+    <div class="row">
+        @foreach (var board in company.Boards)
+        {
+            <div class="col-3" style="padding-bottom:2%; text-align:left">
+                <div style="padding-bottom:4%;">
+                    <a href="/delete_board/@board.Id" class="btn btn-outline-secondary oi oi-minus" style="text-align:left"></a>
+                    <a href="/update_board/@board.Id" class="btn btn-outline-secondary oi oi-pencil" style="text-align:right"></a>
+                </div>
+                <BoardPreview>
+                    <CardTitle><a href="/read_board/@board.Id" class="stretched-link" style="text-decoration:none; color:black;">@board.Name</a></CardTitle>
+                    <CardDesc>@board.Description</CardDesc>
+                </BoardPreview>
+            </div>
+        }
+        <div class="col-sm-1">
+            <button class="btn btn-outline-secondary oi oi-plus" @onclick="GoToCreateBoard"></button>
+        </div>
+    </div>
+<hr />
+}
+
+@code {
+    private List<Company> Companies = new List<Company>();
+
+
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            Companies = await Http.GetFromJsonAsync<List<Company>>("api/Companies");
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.Message);
+        }
+    }
+
+    private void GoToCreateBoard()
+    {
+        Navigation.NavigateTo("/create_board");
+    }
+
+}
